@@ -94,7 +94,7 @@ for j=1:size(luminance_data,1)
     observed_view(j).gl = lum2rgb(observed_view(j).lumi);
     
     serial = sprintf('%2.2d',j);
-    imwrite(observed_view(j).gl, ['Output-from-left-to-right-view=' serial 'deg.png']);
+    imwrite(observed_view(j).gl, ['Output-from-left-to-right-view=' serial 'th.png']);
     
     disp(['  Process...' num2str(j/size(luminance_data,1)*100,3) '%']);
 end
