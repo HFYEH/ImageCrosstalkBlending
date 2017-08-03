@@ -76,6 +76,8 @@ view = struct('gl','uint8', 'lumi', 'double');
 
 for i=1:VN
     view(i).gl = imread(handles.multiview_path{i});
+    [h,w,~] = size(view(i).gl);
+    view(i).gl = imresize(view(i).gl, [640/w*h, 640]);
     view(i).lumi = rgb2lum(view(i).gl);
 end
 
