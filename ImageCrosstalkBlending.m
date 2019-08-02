@@ -34,7 +34,7 @@ function pushbutton_load_luminance_Callback(hObject, eventdata, handles)
 [filename, pathname] = uigetfile( ...
     {  '*.csv','csv'; ...
     '*.*',  'All Files (*.*)'}, ...
-    ['選擇 crosstalk profile']);
+    ['Crosstalk profile']);
 
 luminance_path=fullfile(pathname, filename);
 
@@ -58,7 +58,7 @@ function pushbutton_load_multiview_Callback(hObject, eventdata, handles)
 [filename, pathname] = uigetfile( ...
     {  '*.bmp;*.png;*.jpg','bmp, png, jpg'; ...
     '*.*',  'All Files (*.*)'}, ...
-    ['選擇欲讀入的圖'], ...
+    ['Multiview images'], ...
     'MultiSelect', 'on');
 
 handles.multiview_path=fullfile(pathname, filename);
@@ -75,7 +75,8 @@ view = struct('gl','uint8', 'lumi', 'double');
 for i=1:VN
     view(i).gl = imread(handles.multiview_path{i});
     [h,w,~] = size(view(i).gl);
-    view(i).gl = imresize(view(i).gl, [640/w*h, 640]);
+    % Resize input/output images
+    % view(i).gl = imresize(view(i).gl, [640/w*h, 640]);
     view(i).lumi = rgb2lum(view(i).gl);
 end
 
